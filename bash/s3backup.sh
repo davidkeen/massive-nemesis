@@ -14,6 +14,9 @@ TAR=/bin/tar
 SVN_HOTBACKUP=/usr/share/doc/subversion-1.6.6/tools/backup/hot-backup.py
 TRAC_ADMIN='/usr/bin/trac-admin'
 
+# tar's Backup Options
+OPTIONS=cjpf
+
 # S3 variables
 export AWS_ACCESS_KEY_ID=9999999999
 export AWS_SECRET_ACCESS_KEY=0000000000
@@ -24,6 +27,7 @@ S3CMD="$S3SYNCDIR/s3cmd.rb --ssl"
 BUCKET='my_bucket_name'
 PREFIX='backup'
 
+# Database credentials
 DB_USER='root'
 DB_PASS='password'
 
@@ -33,14 +37,16 @@ DATABASES=(database1 database2)
 # Backup these svn repos
 REPOS=(repo1 repo2)
 
+# Backup these config files
+CONFIG_FILES='/home/david/s3backup.sh /etc/httpd/conf.d/vhosts.conf /etc/httpd/conf.d/ssl.conf'
+
 # Backup Storage Locations
 #BACKUP=/root/backup/data
 
 # Working directory
 WORKING_DIR=/tmp/david_bak
 
-# tar's Backup Options
-OPTIONS=cjpf
+########################################################################
 
 # Get the current date
 date=`$DATE '+%Y%m%d'`
@@ -48,15 +54,12 @@ date=`$DATE '+%Y%m%d'`
 # We keep 1 month's worth of backups
 LAST_MONTH=$($DATE -d '1 month ago' +%Y%m%d)
 
-########################################################################
-
 # Make the working directory
 mkdir $WORKING_DIR
 
 #
 # Backup config files
 #
-CONFIG_FILES='/home/david/s3backup.sh /etc/httpd/conf.d/vhosts.conf /etc/httpd/conf.d/ssl.conf'
 
 # Tar them up
 $TAR $OPTIONS $WORKING_DIR/$date-conf.tar.bz2 $CONFIG_FILES 1>/dev/null 2>&1
