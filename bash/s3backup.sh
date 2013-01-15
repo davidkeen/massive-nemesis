@@ -2,6 +2,7 @@
 
 ########################################################################
 # An s3 backup script
+# Uses s3sync (https://github.com/ms4720/s3sync)
 #
 # Run this weekly and keep 1 month's worth of backups (4)
 ########################################################################
@@ -11,6 +12,7 @@ DATE=/bin/date
 MYSQLDUMP=/usr/bin/mysqldump
 RM=/bin/rm
 TAR=/bin/tar
+AWK='/usr/bin/gawk --posix'
 SVN_HOTBACKUP=/usr/share/doc/subversion-1.6.6/tools/backup/hot-backup.py
 TRAC_ADMIN='/usr/bin/trac-admin'
 
@@ -52,7 +54,7 @@ WORKING_DIR=/tmp/david_bak
 date=`$DATE '+%Y%m%d'`
 
 # We keep 1 month's worth of backups
-LAST_MONTH=$($DATE -d '1 month ago' +%Y%m%d)
+DELETE_BEFORE=$($DATE -d '1 month ago' +%Y%m%d)
 
 # Make the working directory
 mkdir $WORKING_DIR
@@ -119,18 +121,14 @@ rm -rf $WORKING_DIR/trac
 #
 
 # Get a list of files in the bucket, strip the prefix and compare their date string
-files=$($RUBY $S3CMD list $BUCKET:$PREFIX | sed -e "s/$PREFIX\///g" | awk --posix -v last_month=$LAST_MONTH '
+files=$($RUBY $S3CMD list $BUCKET:$PREFIX | sed -e "s/$PREFIX\///g" | $AWK -v delete_before=$DELETE_BEFORE '
     BEGIN { FS = "-" }
-    $1 ~ /^[[:digit:]]{8}/ { if ($1 < last_month) print $0 }
+    $1 ~ /^[[:digit:]]{8}$/ { if ($1 <= delete_before) print $0 }
 ')
 
 for key in $files; do
     $RUBY $S3CMD delete $BUCKET:$PREFIX/$key
 done
-
-# Remove the working directory
-rm -rf $WORKING_PATH
-
 
 # Remove the working directory
 rm -rf $WORKING_DIR
