@@ -1,0 +1,5 @@
+Prepend a line to a file
+ 
+$ sed '1i\
+> set foreign_key_checks=0;
+> ' db_dump > db_dump-no_key_checks
