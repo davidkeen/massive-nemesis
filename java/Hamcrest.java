@@ -20,9 +20,9 @@ public class Hamcrest {
 
     @Test
     public void assertListContains() throws Exception {
-		List<String> list = new ArrayList<>();
-		list.put("foo");
-		list.put("bar");
+        List<String> list = new ArrayList<>();
+        list.put("foo");
+        list.put("bar");
 
         assertThat(list, containsInAnyOrder("bar", "foo");
     }
