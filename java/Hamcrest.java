@@ -24,6 +24,6 @@ public class Hamcrest {
         list.put("foo");
         list.put("bar");
 
-        assertThat(list, containsInAnyOrder("bar", "foo");
+        assertThat(list, Matchers.containsInAnyOrder("bar", "foo");
     }
 }
