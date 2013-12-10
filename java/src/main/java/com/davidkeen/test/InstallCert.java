@@ -1,3 +1,5 @@
+package com.davidkeen.test;
+
 /**
  * Originally posted at: (not available now)
  * http://blogs.sun.com/andreas/resource/InstallCert.java

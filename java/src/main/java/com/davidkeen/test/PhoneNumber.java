@@ -1,3 +1,5 @@
+package com.davidkeen.test;
+
 /**
  * Equals and hashCode are hard! This example is taken from the excellent book "Effective Java" by Joshua Bloch.
  * If you write java (or even if you don't) you should buy it.

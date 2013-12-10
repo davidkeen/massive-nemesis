@@ -1,3 +1,5 @@
+package com.davidkeen.test;
+
 /*
  * Adapted from http://piotrga.wordpress.com/2009/03/27/hamcrest-regex-matcher/
  * and http://www.planetgeek.ch/2012/03/07/create-your-own-matcher/

@@ -1,3 +1,5 @@
+package com.davidkeen.test;
+
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Handler;
@@ -33,7 +35,7 @@ public class JavaLoggingToSlf4jRedirector {
 
             // done, let's check it right away!!!
             java.util.logging.Logger.getLogger(JavaLoggingToSlf4jRedirector.class.getName())
-                    .info("activated: sending JDK log messages to SLF4J");
+                .info("activated: sending JDK log messages to SLF4J");
         } catch (Exception exc) {
             org.slf4j.LoggerFactory.getLogger(JavaLoggingToSlf4jRedirector.class).error("activation failed", exc);
         }
@@ -47,7 +49,7 @@ public class JavaLoggingToSlf4jRedirector {
     }
 
     protected static class JDKLogHandler extends Handler {
-        private Map<String, org.slf4j.Logger> cachedLogs = new ConcurrentHashMap<String, org.slf4j.Logger>();
+        private Map<String, org.slf4j.Logger> cachedLogs = new ConcurrentHashMap<>();
 
         private org.slf4j.Logger getLog(String logName) {
             org.slf4j.Logger logger = cachedLogs.get(logName);

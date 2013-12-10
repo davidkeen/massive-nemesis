@@ -1,7 +1,11 @@
+package com.davidkeen.test;
+
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertThat;
@@ -21,9 +25,9 @@ public class Hamcrest {
     @Test
     public void assertListContains() throws Exception {
         List<String> list = new ArrayList<>();
-        list.put("foo");
-        list.put("bar");
+        list.add("foo");
+        list.add("bar");
 
-        assertThat(list, Matchers.containsInAnyOrder("bar", "foo");
+        assertThat(list, Matchers.containsInAnyOrder("bar", "foo"));
     }
 }
