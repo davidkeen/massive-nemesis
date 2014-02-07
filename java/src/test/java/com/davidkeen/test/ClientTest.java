@@ -18,6 +18,7 @@ import java.lang.reflect.Field;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -51,7 +52,7 @@ public class ClientTest {
 
         assertEquals(100, client.getRequest(1));
 
-        verify(mockHttpClient).executeMethod(any(GetMethod.class));
+        verify(mockHttpClient).executeMethod(isA(GetMethod.class));
     }
 
     @Test(expected = RuntimeException.class)
