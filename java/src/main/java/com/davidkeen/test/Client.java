@@ -12,6 +12,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+/**
+ * Test client using HttpClient 3.1.
+ * See associated test for example of mocking the response.
+ */
 public class Client {
 
     private HttpClient httpClient = new HttpClient();

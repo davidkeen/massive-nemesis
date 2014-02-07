@@ -21,6 +21,9 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+/**
+ * Example test using Mockito's {@link Answer} and reflection to mock the response.
+ */
 @RunWith(MockitoJUnitRunner.class)
 public class ClientTest {
 
