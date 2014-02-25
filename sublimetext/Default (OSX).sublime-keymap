@@ -2,6 +2,6 @@
 [
 	{ "keys": ["alt+shift+up"], "command": "swap_line_up" },
 	{ "keys": ["alt+shift+down"], "command": "swap_line_down" },
-	{ "keys": ["super+backspace"], "command": "run_macro_file", "args": {"file": "Packages/Default/Delete Line.sublime-macro"} },
+	{ "keys": ["super+backspace"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Delete Line.sublime-macro"} },
 	{ "keys": ["super+d"], "command": "duplicate_line" }
 ]
