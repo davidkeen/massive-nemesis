@@ -3,6 +3,6 @@
 
 .idea
 
-/java/target/
+target/
 
 .DS_Store
