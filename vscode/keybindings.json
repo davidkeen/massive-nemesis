@@ -1,0 +1,11 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    { "key": "cmd+backspace",         "command": "editor.action.deleteLines",
+                                         "when": "editorFocus" },
+    { "key": "cmd+d",                 "command": "editor.action.copyLinesDownAction",
+                                         "when": "editorTextFocus" },
+    { "key": "alt+shift+down",        "command": "editor.action.moveLinesDownAction",
+                                         "when": "editorTextFocus" },
+    { "key": "alt+shift+up",          "command": "editor.action.moveLinesUpAction",
+                                         "when": "editorTextFocus" }
+]
