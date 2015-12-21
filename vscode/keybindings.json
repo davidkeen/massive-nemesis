@@ -7,5 +7,9 @@
     { "key": "alt+shift+down",        "command": "editor.action.moveLinesDownAction",
                                          "when": "editorTextFocus" },
     { "key": "alt+shift+up",          "command": "editor.action.moveLinesUpAction",
+                                         "when": "editorTextFocus" },
+    { "key": "alt+up",                "command": "editor.action.smartSelect.grow",
+                                         "when": "editorTextFocus" },
+    { "key": "alt+down",              "command": "editor.action.smartSelect.shrink",
                                          "when": "editorTextFocus" }
 ]
