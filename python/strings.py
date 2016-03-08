@@ -17,4 +17,4 @@ strings = set()
 while len(strings) < count:
     strings.add(''.join(random.choice(chars) for x in range(length)))
 
-print '\n'.join(strings)
+print('\n'.join(strings))

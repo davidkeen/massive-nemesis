@@ -19,9 +19,9 @@ frame_count = recording_seconds * recording_fps
 lapse_time = frame_count / args.final_frame_rate / 60
 total_size = frame_count * args.image_size
 
-print
+print()
 print('{0:12} {1:12} {2:12} {3:12} {4:12}'.format('In FPS', 'Out FPS', 'Mins', 'Images', 'MB'))
 print('-' * 61)
 print('{0:<12.2f} {1:<12} {2:<12.2f} {3:<12.2f} {4:<12.2f}'.format(recording_fps, args.final_frame_rate, lapse_time,
                                                                    frame_count, total_size))
-print
+print()
