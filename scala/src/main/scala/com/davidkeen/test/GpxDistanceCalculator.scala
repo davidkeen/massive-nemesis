@@ -1,3 +1,5 @@
+package com.davidkeen.test
+
 object GpxDistanceCalculator {
 
   def haversineDistance(pointA: (Double, Double), pointB: (Double, Double)): Double = {
