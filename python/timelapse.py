@@ -3,7 +3,6 @@ Calculate the running time and storage requirements for a time lapse.
 Inputs are: recording time, recording frame rate, final frame rate and image size.
 """
 
-from __future__ import division
 import argparse
 
 parser = argparse.ArgumentParser(description='Time lapse calculator')
