@@ -13,7 +13,8 @@ export AWS_SECRET_ACCESS_KEY=my_secret_access_key
 export BUCKET=bucket_name
 export S3_USE_SIGV4="True"
 
-# GPG passphrase
+# GPG
+export ENCRYPT_KEY=key_id
 export PASSPHRASE=secret_passphrase
 
 # Database credentials
@@ -23,7 +24,7 @@ DB_PASS='password'
 # Backup these databases
 DATABASES=(database1 database2) 
 
-# Working directory
+# Working directory (consider the permissions of this directory)
 WORKING_DIR=/tmp/bak
 
 ########################################################################
@@ -40,10 +41,13 @@ done
 
 
 # Send them to s3
-duplicity --s3-use-new-style --full-if-older-than 7D $WORKING_DIR s3://s3-eu-west-1.amazonaws.com/$BUCKET
+duplicity --full-if-older-than 7D --encrypt-key="$ENCRYPT_KEY" $WORKING_DIR s3://s3-eu-west-1.amazonaws.com/$BUCKET
+
+# Verify
+duplicity verify --encrypt-key="$ENCRYPT_KEY" s3://s3-eu-west-1.amazonaws.com/$BUCKET $WORKING_DIR
 
 # Cleanup
-duplicity remove-older-than 30D --force s3://s3-eu-west-1.amazonaws.com/$BUCKET
+duplicity remove-older-than 30D --force --encrypt-key=$ENCRYPT_KEY s3://s3-eu-west-1.amazonaws.com/$BUCKET
 
 # Remove the working directory
 rm -rf $WORKING_DIR
