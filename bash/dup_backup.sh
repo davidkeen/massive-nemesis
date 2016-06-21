@@ -4,7 +4,9 @@
 # An s3 backup script
 # Uses duplicity (http://duplicity.nongnu.org/)
 #
-# Run this daily and keep 1 month's worth of backups
+# Run this daily and keep 1 month's worth of backups, e.g.
+# m h  dom mon dow   command
+# 0 4 * * * /root/dup_backup.sh >>/var/log/duplicity/backup.log
 ########################################################################
 
 # S3 variables
