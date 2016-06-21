@@ -39,7 +39,6 @@ for database in ${DATABASES[@]}; do
   mysqldump -u$DB_USER -p$DB_PASS $database > $WORKING_DIR/$database.sql
 done
 
-
 # Send them to s3
 duplicity --full-if-older-than 7D --encrypt-key="$ENCRYPT_KEY" $WORKING_DIR s3://s3-eu-west-1.amazonaws.com/$BUCKET
 
