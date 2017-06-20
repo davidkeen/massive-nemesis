@@ -14,14 +14,17 @@ import java.util.stream.Collectors;
  */
 public class FutureStream {
 
+    private static final int MAX_THREADS = 8;
+
     /**
      * Provides a supplier function that reverses a string.
      *
      * @param s the string to reverse.
      * @return a supplier function that reverses the given string.
      */
-    private Supplier<String> StringReverser(String s) {
+    private Supplier<String> stringReverser(String s) {
         return () -> {
+            System.out.println(Thread.currentThread().getName() + ": reversing string '" + s + "'");
             StringBuilder sb = new StringBuilder(s);
             return sb.reverse().toString();
         };
@@ -30,30 +33,33 @@ public class FutureStream {
     /**
      * Asynchronously process the collection.
      */
-    private void process(List<String> data, ExecutorService executorService) {
+    private List<String> process(List<String> data, ExecutorService executorService) {
 
         // Note: This must be processed in two separate stream pipelines. If you join these two
         // streams into one then due to the lazy nature of stream operations it will execute sequentially.
         // First build a collection of CompletableFutures...
         List<CompletableFuture<String>> futures = data.stream()
-                .map(s -> CompletableFuture.supplyAsync(StringReverser(s), executorService))
+                .map(s -> CompletableFuture.supplyAsync(stringReverser(s), executorService))
                 .collect(Collectors.toList());
 
         // then wait for all futures to finish and build the response
-        futures.stream()
+        return futures.stream()
                 .map(CompletableFuture::join)
-                .forEach(System.out::println);
+                .collect(Collectors.toList());
     }
 
     public static void main(String[] args) {
-
         List<String> theData = Arrays.asList("alpha", "bravo", "charlie", "delta");
 
         // Get a thread pool: size = number of strings to process (max threads 8)
-        ExecutorService executorService = Executors.newFixedThreadPool(Math.min(theData.size(), 8));
+        ExecutorService executorService = Executors.newFixedThreadPool(Math.min(theData.size(), MAX_THREADS));
 
         FutureStream fs = new FutureStream();
-        fs.process(theData, executorService);
+        List<String> reversed = fs.process(theData, executorService);
+
+        for (String s : reversed) {
+            System.out.println(s);
+        }
 
         executorService.shutdown();
     }
