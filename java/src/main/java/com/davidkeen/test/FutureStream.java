@@ -17,7 +17,7 @@ public class FutureStream {
     /**
      * Provides a supplier function that reverses a string.
      *
-     * @param s the string to StringReverser.
+     * @param s the string to reverse.
      * @return a supplier function that reverses the given string.
      */
     private Supplier<String> StringReverser(String s) {
