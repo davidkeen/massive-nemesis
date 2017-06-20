@@ -51,7 +51,7 @@ public class FutureStream {
     public static void main(String[] args) {
         List<String> theData = Arrays.asList("alpha", "bravo", "charlie", "delta");
 
-        // Get a thread pool: size = number of strings to process (max threads 8)
+        // Get a thread pool: size = number of strings to process (limited to MAX_THREADS)
         ExecutorService executorService = Executors.newFixedThreadPool(Math.min(theData.size(), MAX_THREADS));
 
         FutureStream fs = new FutureStream();
