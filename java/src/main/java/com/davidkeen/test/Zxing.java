@@ -19,12 +19,12 @@ import java.util.Map;
 
 public class Zxing {
 
-    private static final String THE_DATA_TO_BE_ENCODED = "THE DATA TO BE ENCODED";
+    private static final String DATA = "THE DATA TO BE ENCODED";
 
     // The size in pixels of the QR code image
     private static final int IMAGE_SIZE = 250;
 
-    private static BufferedImage getQrCodeImage(String data) throws WriterException {
+    private static BufferedImage stringToQrCodeImage(String data) throws WriterException {
         Map<EncodeHintType, Object> hintMap = new EnumMap<>(EncodeHintType.class);
         hintMap.put(EncodeHintType.MARGIN, 1);
         hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
@@ -43,7 +43,7 @@ public class Zxing {
     }
 
     public static void main(String[] args) throws Exception {
-        BufferedImage image = getQrCodeImage(THE_DATA_TO_BE_ENCODED);
+        BufferedImage image = stringToQrCodeImage(DATA);
 
         System.out.println(imageToHtml(image));
 
