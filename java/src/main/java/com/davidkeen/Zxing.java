@@ -1,4 +1,4 @@
-package com.davidkeen.test;
+package com.davidkeen;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;

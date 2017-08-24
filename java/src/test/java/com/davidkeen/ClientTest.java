@@ -1,4 +1,4 @@
-package com.davidkeen.test;
+package com.davidkeen;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethodBase;

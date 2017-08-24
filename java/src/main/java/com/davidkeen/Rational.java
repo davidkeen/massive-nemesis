@@ -1,4 +1,4 @@
-package com.davidkeen.test;
+package com.davidkeen;
 
 public class Rational implements Ordered<Rational> {
 

@@ -1,4 +1,4 @@
-package com.davidkeen.test;
+package com.davidkeen;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

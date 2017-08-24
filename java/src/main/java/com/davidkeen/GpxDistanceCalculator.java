@@ -1,4 +1,4 @@
-package com.davidkeen.test;
+package com.davidkeen;
 
 import com.google.common.collect.ImmutableList;
 

@@ -1,4 +1,4 @@
-package com.davidkeen.test;
+package com.davidkeen;
 
 import org.hamcrest.Matchers;
 import org.junit.Test;

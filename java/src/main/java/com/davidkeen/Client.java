@@ -1,4 +1,4 @@
-package com.davidkeen.test;
+package com.davidkeen;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;

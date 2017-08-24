@@ -1,4 +1,4 @@
-package com.davidkeen.test;
+package com.davidkeen;
 
 /**
  * A 'rich' interface for data that have a single, natural ordering.

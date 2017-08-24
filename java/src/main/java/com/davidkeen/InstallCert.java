@@ -1,4 +1,4 @@
-package com.davidkeen.test;
+package com.davidkeen;
 
 /**
  * Originally posted at: (not available now)

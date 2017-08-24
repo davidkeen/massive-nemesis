@@ -1,4 +1,4 @@
-package com.davidkeen.test;
+package com.davidkeen;
 
 /*
  * Adapted from http://piotrga.wordpress.com/2009/03/27/hamcrest-regex-matcher/

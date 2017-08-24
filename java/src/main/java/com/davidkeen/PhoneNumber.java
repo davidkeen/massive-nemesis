@@ -1,4 +1,4 @@
-package com.davidkeen.test;
+package com.davidkeen;
 
 /**
  * Equals and hashCode are hard! This example is taken from the excellent book "Effective Java" by Joshua Bloch.
