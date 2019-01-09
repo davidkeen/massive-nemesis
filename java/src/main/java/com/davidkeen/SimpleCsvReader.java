@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CsvReader {
+public class SimpleCsvReader {
 
     public List<String> readHeader(String file) throws IOException {
         try (BufferedReader reader = Files.newBufferedReader(Paths.get(file), StandardCharsets.UTF_8)) {
@@ -30,11 +30,11 @@ public class CsvReader {
     public static void main(String[] args) throws Exception {
         String path = "java/src/main/resources/test.csv";
 
-        CsvReader csvReader = new CsvReader();
-        List<String> columns = csvReader.readHeader(path);
+        SimpleCsvReader simpleCsvReader = new SimpleCsvReader();
+        List<String> columns = simpleCsvReader.readHeader(path);
         columns.forEach(System.out::println);
 
-        List<String> lines = csvReader.readLines(path);
+        List<String> lines = simpleCsvReader.readLines(path);
         lines.forEach(System.out::println);
     }
 
