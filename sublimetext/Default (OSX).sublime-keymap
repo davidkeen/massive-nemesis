@@ -4,6 +4,7 @@
 	{ "keys": ["alt+shift+down"], "command": "swap_line_down" },
 	{ "keys": ["super+backspace"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Delete Line.sublime-macro"} },
 	{ "keys": ["super+d"], "command": "duplicate_line" },
+    { "keys": ["super+l"], "command": "show_overlay", "args": {"overlay": "goto", "text": ":"} },
 
     /* Single quote for Clojure */
     { "keys": ["'"], "command": "insert_snippet", "args": {"contents": "'"}, "context":
